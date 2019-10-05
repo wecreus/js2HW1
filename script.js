@@ -1,147 +1,116 @@
-let a, b;
-console.log(performance.now());
+let plants = [{
+    name: "Aloe Vera",
+    desc: "In Mini Dolores Planter",
+    price: 80
+}, {
+    name: "Air Plant",
+    desc: "In Tillinadz Stand Planter",
+    price: 75
+}, {
+    name: "Aloe Plant Trio",
+    desc: "In Mini Dolores Planter",
+    price: 50
+}, {
+    name: "Aloe Vera",
+    desc: "In Big Dolores Planter",
+    price: 78
+}, {
+    name: "Aloe Vera",
+    desc: "In Mini Quirk Planter",
+    price: 59
+}, {
+    name: "Air Plant Trio",
+    desc: "In Mini Dolores Planter",
+    price: 90
+}];
+let itemsHolder = document.getElementById("Items-Holder");
 
+function changeView() {
+    let itemsHolder = document.getElementById("Items-Holder");
 
-function evaluateNumbers() {
-    a = document.getElementById("a").value;
-    b = document.getElementById("b").value;
+    //clearing the div
+    while (itemsHolder.lastElementChild) {
+        itemsHolder.removeChild(itemsHolder.lastElementChild);
+    }
+    itemsHolder.classList.remove("items-holder-tile");
+    itemsHolder.classList.remove("items-holder-list");
 
-    // converting to number so then we can check if it is an integer
-    a = Number(a);
-    b = Number(b);
-
-    if(((a >= 2 && b >= 2) && (a <= 10 && b <= 10)) && (Number.isInteger(a) && Number.isInteger(b))){
-        doSomething();
+    if(document.getElementById("view-type").value === "tiles"){
+        appendPlants(itemsHolder, "tile");
+    } else {
+        appendPlants(itemsHolder, "list");
     }
 }
 
+function appendPlants(itemsHolder, className){
+    let c = 0;
+    itemsHolder.classList.add(`items-holder-${className}`);
+
+    for(let i = 1; i <= 20; i++){
+
+        // block div
+        let block = document.createElement("div");
+        block.classList.add(className);
+        itemsHolder.appendChild(block);
 
 
 
 
 
-function doSomething(){
-    // removing outline of table placeholder
-    let tableHolder = document.getElementsByClassName("tableHolder");
-    tableHolder[0].classList.remove("emptyTableHolder");
-
-
-    // initializing array
-    let c = a * b;
-    let mas = new Array(a);
-    for (let i = 0; i < mas.length; i++) {
-        mas[i] = new Array(b);
-    }
-
-    // filling array
-    let tempA = 0;
-    let tempB = 0;
-    let maxA = a - 1;
-    let maxB = b - 1;
-    let minA = 0;
-    let minB = 0;
-    let counter = 1;// counter switches vert and horz way of filling the array
-    let direction = 1; // when direction is -1 then array will fill backwards (from right to left or from bottom to top)
-    let numberItself = 1;
-    while(true){
-        if(counter%2 === 0){
-
-            //vertical moving
-            if(direction > 0) {
-
-                //moving from top to bottom
-                for(let i = minA; i <= maxA; i++){
-                    mas[i][tempB] = numberItself;
-                    numberItself++;
-                }
-                tempA = maxA;
-                maxA--;
-
-                if(numberItself > c){
-                    break;
-                }
-            } else {
-
-                //moving from bottom to top
-                for(let i = maxA; i >= minA; i--){
-                    mas[i][tempB] = numberItself;
-                    numberItself++;
-                }
-                minB++;
-                tempA = minA;
-
-                if(numberItself > c){
-                    break;
-                }
-            }
-            direction *= -1;
-
-
-        } else {
-
-            if(direction > 0){
-
-                //moving from left to right
-                for(let i = minB; i <= maxB; i++){
-                    mas[tempA][i] = numberItself;
-                    numberItself++;
-                }
-                minA++;
-                tempB = maxB;
-                maxB--;
-
-                if(numberItself > c){
-                    break;
-                }
-            } else {
-
-                //moving from right to left
-                for(let i = maxB; i >= minB; i--){
-                    mas[tempA][i] = numberItself;
-                    numberItself++;
-                }
-                tempB = minB;
-
-                if(numberItself > c){
-                    break;
-                }
-            }
+        // image
+        c = i;
+        while(c > 9){
+            c -= 9;
         }
-        counter++;
-    }
 
-    let table = document.querySelector("table");
+        let helper = document.createElement("span");
+        helper.classList.add("helper");
 
-    // clearing table
-    let child = table.lastElementChild;
-    while (child) {
-        table.removeChild(child);
-        child = table.lastElementChild;
-    }
-
-    // filling table
-
-    let checkboxHolder = document.getElementById("checkbox");
-
-    for(let i = 0; i < a; i++){
-        let row = table.insertRow();
-        for(let j = 0; j < b; j++){
-            let cell = row.insertCell();
+        let img = document.createElement("img");
+        img.classList.add(`image-${className}`);
+        img.src = "img/plant" + c +  ".jpg";
 
 
-            if(checkboxHolder.checked){
-                let percent = 50/c;
-                percent = mas[i][j] * percent * 2.5;
-                percent = 250 - percent;
-                cell.style.backgroundColor = `rgb(${percent}, ${percent}, ${percent})`;
-                cell.style.border = "0";
-            } else {
-                let text = document.createTextNode(mas[i][j]);
-                cell.appendChild(text);
-            }
+        let imageTileHelper = document.createElement("div");
+        imageTileHelper.classList.add(`image-${className}-helper`);
+        imageTileHelper.appendChild(helper);
+        imageTileHelper.appendChild(img);
+        block.appendChild(imageTileHelper);
+
+        // title block
+        let titleBlock = document.createElement("div");
+        titleBlock.classList.add(`title-${className}`);
+        block.appendChild(titleBlock);
+
+        // name
+        c = i - 1;
+        while(c >= plants.length){
+            c -= plants.length;
         }
+
+        let spanName = document.createElement("span");
+        spanName.appendChild(document.createTextNode(plants[c].name));
+        spanName.classList.add(`name-${className}`);
+        titleBlock.appendChild(spanName);
+
+        // desc
+        let spanDesc = document.createElement("span");
+        spanDesc.appendChild(document.createTextNode(plants[c].desc));
+        spanDesc.classList.add(`desc-${className}`);
+        titleBlock.appendChild(spanDesc);
+
+        // price
+        let spanPrice = document.createElement("span");
+        spanPrice.appendChild(document.createTextNode(plants[c].price));
+        spanPrice.classList.add(`price-${className}`);
+        titleBlock.appendChild(spanPrice);
     }
-    
 
 }
 
+
+document.getElementById("view-type").addEventListener("change", changeView);
+
+window.onload = function() {
+    changeView();
+};
