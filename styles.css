@@ -1,0 +1,105 @@
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+.Content-Holder {
+    max-width: 1000px;
+    height: 100%;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.mainForm {
+    width: 48%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.mainForm-group {
+    width: auto;
+    padding: 6px 5px;
+    margin: 4px 0;
+    display: block;
+    height: 20px;
+    transition: background-color 250ms;
+}
+
+.mainForm-group:hover{
+   background-color: #f1f1f1;
+}
+
+.a, .b {
+    float: right;
+    width: 40px;
+}
+
+.checkbox {
+    float: right;
+}
+
+.form-submit {
+    font-size: 105%;
+    font-weight: bold;
+    float: right;
+    padding: 6px 25px;
+    margin: 10px 5px;
+    border-radius: 25px;
+    border: 2px solid #aeb0b7;
+    cursor: pointer;
+    background: linear-gradient(white 20%, rgb(227, 230, 234) 50%);
+    background-size:1px 250px;
+}
+
+.form-submit:hover {
+    color: black;
+    border: 2px solid black;
+    background-position: 400px;
+    transition-property: border, color, background;
+    transition-duration: 500ms;
+}
+
+.tableHolder {
+    width: 48%;
+    min-width: 340px;
+    height: 340px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+
+}
+
+.emptyTableHolder {
+    border: 5px dashed #adadad;
+}
+
+.table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin: auto auto;
+    vertical-align: center;
+}
+
+.table td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+    background-clip: padding-box;
+}
+
+
+@media only screen and (max-width: 710px) {
+    .Content-Holder {
+        flex-wrap: wrap;
+    }
+    .mainForm {
+        width: 100%;
+    }
+    .tableHolder {
+        width: 100%;
+    }
+}

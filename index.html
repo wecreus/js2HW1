@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Riachuk Danylo">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <title>Riabchuk D. Homework 1</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+<script src="script.js"></script>
+<div class="Content-Holder">
+    <form class="mainForm" onsubmit="return false">
+        <div class="mainForm-group">
+            <label for="a">Enter quantity of rows: </label>
+            <input type="number" name="a" min="2" max="10" id="a" class="a" value="2" required>
+        </div>
+        <div class="mainForm-group">
+            <label for="b">Enter quantity of columns: </label>
+            <input type="number" name="b" min="2" max="10" id="b" class="b" value="2" required>
+        </div>
+        <div class="mainForm-group">
+            <label for="checkbox">Color shift: </label>
+            <input type="checkbox" name="checkbox" id="checkbox" class="checkbox" value="newsletter">
+        </div>
+        <input type="submit" value="Enter values" onclick="evaluateNumbers()" class="form-submit">
+    </form>
+    <div class="tableHolder emptyTableHolder">
+        <table class="table">
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
