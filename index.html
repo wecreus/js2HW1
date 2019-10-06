@@ -12,11 +12,18 @@
 <body>
 <script defer src="script.js"></script>
 <div class="Content-Holder">
-    <label for="view-type" id="label-view-type">View style:</label>
-    <select name="view-type" id="view-type">
-        <option value="tiles">Tiles</option>
-        <option value="list">List</option>
-    </select>
+    <div class="button-holder">
+        <div class="left-side">
+            <label for="view-type" id="label-view-type">View style:</label>
+            <select name="view-type" id="view-type">
+                <option value="tiles">Tiles</option>
+                <option value="list">List</option>
+            </select>
+        </div>
+        <div class="right-side">
+            <div class="button">Add Element</div>
+        </div>
+    </div>
     <div id="Items-Holder"></div>
 </div>
 </body>
