@@ -1,7 +1,7 @@
 let plants = [{
     name: "Aloe Vera",
     desc: "In Mini Dolores Planter",
-    price: 80
+    price: 80,
 }, {
     name: "Air Plant",
     desc: "In Tillinadz Stand Planter",
@@ -23,7 +23,6 @@ let plants = [{
     desc: "In Mini Dolores Planter",
     price: 90
 }];
-let itemsHolder = document.getElementById("Items-Holder");
 
 function changeView() {
     let itemsHolder = document.getElementById("Items-Holder");
@@ -93,8 +92,9 @@ function appendPlants(itemsHolder, className){
         titleBlock.appendChild(spanName);
 
         // color choosing thingy
+        let spanColor;
         if(c === 0){
-            var spanColor = document.createElement("span");
+            spanColor = document.createElement("span");
             spanColor.classList.add(`color-${className}`);
             let redColor = document.createElement("div");
             redColor.classList.add("color-red");
@@ -161,6 +161,16 @@ function changeColor(color) {
     }
 
     imageElement[0].src = `img/colors/lul${color}.jpg`;
+}
+
+function addElement() {
+    let modalWindow = document.getElementById("modal-window");
+    modalWindow.style.display = "block";
+}
+
+function closeModal() {
+    let modalWindow = document.getElementById("modal-window");
+    modalWindow.style.display = "none";
 }
 
 

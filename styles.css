@@ -57,9 +57,6 @@ body {
     user-select: none;
 }
 
-
-
-
 /* tile styles */
 
 .items-holder-tile {
@@ -207,4 +204,48 @@ body {
     position: absolute;
     display: block;
     bottom: 18px;
+}
+
+
+#modal-window {
+    position: fixed;
+    z-index: 20;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.45);
+    left: 0;
+    top: 0;
+    padding-top: 100px;
+}
+
+.modal-content {
+    width: 800px;
+    height: 500px;
+    background-color: #3e464b;
+    margin: auto;
+    backface-visibility: hidden;
+    padding: 30px;
+}
+
+.modal-button {
+    display: inline-block;
+    font-size: 130%;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 1px 15px;
+    border: 2px solid #666e75;
+    border-radius: 20px;
+    background: linear-gradient(#4E555C 0%, #4E555C 20%, rgb(42, 171, 178) 60%);
+    background-size: 1px 400px;
+    cursor: pointer;
+}
+
+.modal-button:hover {
+    color: white;
+    border: 2px solid white;
+    background-position: 400px;
+    transition-property: border, color, background;
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    user-select: none;
 }
