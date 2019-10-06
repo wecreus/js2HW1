@@ -48,7 +48,6 @@ body {
 .name-tile {
     font-size: 80%;
     font-weight: bold;
-    width: 100%;
     float: left;
     display: block;
 }
@@ -66,6 +65,40 @@ body {
     content: "$";
 }
 
+.color-tile {
+    float: right;
+}
+
+/* color circles */
+.color-circle {
+    border-radius: 25px;
+    height: 12px;
+    width: 12px;
+    border: 2px rgba(251, 244, 255, 0.23) solid;
+    margin: 0 2px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.color-circle:hover {
+    border: 2px rgba(251, 244, 255, 0.73) solid;
+}
+
+.color-red {
+    background-color: #db5046;
+}
+
+.color-green {
+    background-color: #959f7a;
+}
+
+.color-yellow {
+    background-color: #dbccb3;
+}
+
+.selected {
+    border: 2px rgba(251, 244, 255, 0.73) solid;
+}
 
 /* list styles */
 
@@ -97,10 +130,13 @@ body {
 .title-list {
     display: inline-block;
     font-size: 140%;
+    height: 65px;
+    position: relative;
 }
 
 .name-list {
     font-style: italic;
+    margin-left: 2px;
 }
 .name-list:after {
     content: ", ";
@@ -116,4 +152,10 @@ body {
 
 .price-list:before{
     content: "$";
+}
+
+.color-list {
+    position: absolute;
+    display: block;
+    bottom: 18px;
 }
