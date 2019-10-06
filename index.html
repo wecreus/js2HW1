@@ -21,13 +21,34 @@
             </select>
         </div>
         <div class="right-side">
-            <div class="button" onclick="addElement()">Add Element</div>
+            <div class="button" onclick="openModal()">Add Element</div>
         </div>
     </div>
     <div id="Items-Holder"></div>
     <div id="modal-window">
         <div class="modal-content">
-            <div class="modal-button" onclick="closeModal()">Close</div>
+            <form id="modal-form" onsubmit="return false">
+                <div class="modal-top-row">
+                    <span class="modal-desc">Add new plant to the list</span>
+                </div>
+                <div class="modal-middle-row">
+                    <label for="enter-image" class="modal-label">Upload image of a plant:</label>
+                    <input id="enter-image" class="modal-input" type="file"  onchange="loadFile()" required><br>
+                    <label for="enter-name" class="modal-label">Enter name:</label>
+                    <input type="text" id="enter-name" class="modal-input" placeholder="Name"  minlength="5" required>
+                    <br>
+                    <label for="enter-desc" class="modal-label">Enter description:</label>
+                    <input type="text" id="enter-desc" class="modal-input" placeholder="Description"  minlength="7" required>
+                    <br>
+                    <label for="enter-price" class="modal-label">Enter price:</label>
+                    <input type="text" id="enter-price" class="modal-input" placeholder="Price" required>
+                    <br>
+                </div>
+                <div class="modal-bottom-row">
+                    <div class="modal-close modal-button" onclick="closeModal()">Close</div>
+                    <input type="submit" class="modal-button modal-add" onclick="modalAdd()" value="Add">
+                </div>
+            </form>
         </div>
     </div>
 </div>

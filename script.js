@@ -24,6 +24,9 @@ let plants = [{
     price: 90
 }];
 
+let file; // variable for image
+let reader;
+
 function changeView() {
     let itemsHolder = document.getElementById("Items-Holder");
 
@@ -54,8 +57,8 @@ function appendPlants(itemsHolder, className){
 
         // image
         c = i;
-        while(c > 5){
-            c -= 6;
+        while(c >= plants.length){
+            c -= plants.length;
         }
 
         let helper = document.createElement("span");
@@ -63,10 +66,14 @@ function appendPlants(itemsHolder, className){
 
         let img = document.createElement("img");
         img.classList.add(`image-${className}`);
-        if(c === 0) {
-            img.src = "img/colors/lulred.jpg";
+        if(plants[c].addedByUser){
+            img.src = reader.result;
         } else {
-            img.src = "img/plant" + c +  ".jpg";
+            if(c === 0) {
+                img.src = "img/colors/lulred.jpg";
+            } else {
+                img.src = "img/plant" + c +  ".jpg";
+            }
         }
 
 
@@ -82,9 +89,7 @@ function appendPlants(itemsHolder, className){
         block.appendChild(titleBlock);
 
         // name
-        while(c >= plants.length){
-            c -= plants.length;
-        }
+
 
         let spanName = document.createElement("span");
         spanName.appendChild(document.createTextNode(plants[c].name));
@@ -163,7 +168,7 @@ function changeColor(color) {
     imageElement[0].src = `img/colors/lul${color}.jpg`;
 }
 
-function addElement() {
+function openModal() {
     let modalWindow = document.getElementById("modal-window");
     modalWindow.style.display = "block";
 }
@@ -171,6 +176,43 @@ function addElement() {
 function closeModal() {
     let modalWindow = document.getElementById("modal-window");
     modalWindow.style.display = "none";
+}
+
+function modalAdd() {
+    let name = document.getElementById("enter-name");
+    let desc = document.getElementById("enter-desc");
+    let price = document.getElementById("enter-price");
+    if(!name.value || name.value.length < 5){
+        return 0;
+    }
+    if(!desc.value || desc.value.length < 7){
+        return 0;
+    }
+    if(!price.value){
+        return 0;
+    }
+    if(!file){
+        return 0;
+    }
+
+    plants.push({name: name.value, desc: desc.value, price: price.value, addedByUser: true});
+    closeModal();
+    changeView();
+
+}
+
+function loadFile() {
+
+    file = document.querySelector('input[type=file]').files[0];
+    reader  = new FileReader();
+
+    reader.addEventListener("load", function () {
+        console.log(reader.result)
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
 }
 
 
