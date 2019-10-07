@@ -230,7 +230,7 @@ function loadMore(){
     if(quantity === 7){
         let button = document.getElementsByClassName("button-more")[0];
         button.textContent = "Load More";
-        button.style.width = "92px";
+
         scroll(0,0);
     }
     changeView();
@@ -238,7 +238,7 @@ function loadMore(){
         quantity = -1;
         let button = document.getElementsByClassName("button-more")[0];
         button.textContent = "Collapse";
-        button.style.width = "75px";
+
     }
 
 }
