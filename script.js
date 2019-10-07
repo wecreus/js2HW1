@@ -222,6 +222,7 @@ function loadFile() {
     if (file) {
         reader.readAsDataURL(file);
     }
+
 }
 
 function loadMore(){
@@ -241,6 +242,7 @@ function loadMore(){
     }
 
 }
+
 
 document.getElementById("view-type").addEventListener("change", changeView);
 
