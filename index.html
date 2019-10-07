@@ -41,7 +41,7 @@
                     <input type="text" id="enter-desc" class="modal-input" placeholder="Description"  minlength="7" required>
                     <br>
                     <label for="enter-price" class="modal-label">Enter price:</label>
-                    <input type="text" id="enter-price" class="modal-input" placeholder="Price" required>
+                    <input type="number" id="enter-price" class="modal-input" placeholder="Price" min="1" max="999" required >
                     <br>
                 </div>
                 <div class="modal-bottom-row">
@@ -51,6 +51,7 @@
             </form>
         </div>
     </div>
+    <div class="button button-more" onclick="loadMore()">Load More</div>
 </div>
 </body>
 </html>

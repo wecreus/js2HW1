@@ -23,9 +23,9 @@ let plants = [{
     desc: "In Mini Dolores Planter",
     price: 90
 }];
-
-let file; // variable for image
 let reader;
+let file; // variable for image
+let quantity = 7;
 
 function changeView() {
     let itemsHolder = document.getElementById("Items-Holder");
@@ -48,7 +48,7 @@ function appendPlants(itemsHolder, className){
     let c = 0;
     itemsHolder.classList.add(`items-holder-${className}`);
 
-    for(let i = 0; i <= 20; i++){
+    for(let i = 0; i <= quantity; i++){
 
         // block div
         let block = document.createElement("div");
@@ -66,8 +66,8 @@ function appendPlants(itemsHolder, className){
 
         let img = document.createElement("img");
         img.classList.add(`image-${className}`);
-        if(plants[c].addedByUser){
-            img.src = reader.result;
+        if(plants[c].myReader){
+            img.src = plants[c].myReader.result;
         } else {
             if(c === 0) {
                 img.src = "img/colors/lulred.jpg";
@@ -171,6 +171,11 @@ function changeColor(color) {
 function openModal() {
     let modalWindow = document.getElementById("modal-window");
     modalWindow.style.display = "block";
+
+    document.getElementById("enter-image").value = "";
+    document.getElementById("enter-name").value = "";
+    document.getElementById("enter-desc").value = "";
+    document.getElementById("enter-price").value = "";
 }
 
 function closeModal() {
@@ -181,21 +186,27 @@ function closeModal() {
 function modalAdd() {
     let name = document.getElementById("enter-name");
     let desc = document.getElementById("enter-desc");
-    let price = document.getElementById("enter-price");
+    let price2 = document.getElementById("enter-price");
+    let price;
     if(!name.value || name.value.length < 5){
         return 0;
     }
     if(!desc.value || desc.value.length < 7){
         return 0;
     }
-    if(!price.value){
+    if(!price2.value){
         return 0;
+    } else {
+        price = Number(price2.value);
+        if(price < 1 || price > 999){
+            return 0;
+        }
     }
     if(!file){
         return 0;
     }
 
-    plants.push({name: name.value, desc: desc.value, price: price.value, addedByUser: true});
+    plants.push({name: name.value, desc: desc.value, price: price, myReader: reader});
     closeModal();
     changeView();
 
@@ -203,11 +214,9 @@ function modalAdd() {
 
 function loadFile() {
 
-    file = document.querySelector('input[type=file]').files[0];
-    reader  = new FileReader();
-
+    file = document.getElementById("enter-image").files[0];
+    reader = new FileReader();
     reader.addEventListener("load", function () {
-        console.log(reader.result)
     }, false);
 
     if (file) {
@@ -215,6 +224,23 @@ function loadFile() {
     }
 }
 
+function loadMore(){
+    quantity += 8;
+    if(quantity === 7){
+        let button = document.getElementsByClassName("button-more")[0];
+        button.textContent = "Load More";
+        button.style.width = "92px";
+        scroll(0,0);
+    }
+    changeView();
+    if(quantity > 23){
+        quantity = -1;
+        let button = document.getElementsByClassName("button-more")[0];
+        button.textContent = "Collapse";
+        button.style.width = "75px";
+    }
+
+}
 
 document.getElementById("view-type").addEventListener("change", changeView);
 

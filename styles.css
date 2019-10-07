@@ -95,17 +95,29 @@ body {
     font-weight: bold;
     float: left;
     display: block;
-    min-width: 70%;
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
 }
 
 .desc-tile {
     float: left;
     font-style: italic;
-    min-width: 50%;
+    width: 180px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .price-tile{
     float: right;
+    width: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
 }
 
 .price-tile:before{
@@ -280,4 +292,12 @@ body {
 
 .modal-add {
     float: right;
+}
+
+.button-more {
+    display: block;
+    margin: 10px auto;
+    font-size: 120%;
+    width: 92px;
+    border-radius: 70px;
 }
